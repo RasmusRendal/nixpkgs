@@ -2,7 +2,7 @@
 , fetchurl
 , substituteAll
 , asciidoc
-, docbook_xsl
+, docbook-xsl-nons
 , docbook_xml_dtd_45
 , gettext
 , itstool
@@ -57,7 +57,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     asciidoc
-    docbook_xsl
+    docbook-xsl-nons
     docbook_xml_dtd_45
     gettext
     itstool
