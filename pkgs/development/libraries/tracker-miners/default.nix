@@ -4,7 +4,7 @@
 , asciidoc
 , docbook_xsl
 , docbook_xml_dtd_45
-, intltool
+, gettext
 , itstool
 , libxslt
 , gexiv2
@@ -18,7 +18,6 @@
 , dbus
 , evolution-data-server
 , exempi
-, flac
 , giflib
 , glib
 , gnome3
@@ -38,10 +37,10 @@
 , libsoup
 , libtiff
 , libuuid
-, libvorbis
 , libxml2
 , networkmanager
 , poppler
+, systemd
 , taglib
 , upower
 , totem-pl-parser
@@ -60,7 +59,7 @@ stdenv.mkDerivation rec {
     asciidoc
     docbook_xsl
     docbook_xml_dtd_45
-    intltool
+    gettext
     itstool
     libxslt
     meson
@@ -76,7 +75,6 @@ stdenv.mkDerivation rec {
     dbus
     evolution-data-server
     exempi
-    flac
     giflib
     glib
     gexiv2
@@ -99,10 +97,10 @@ stdenv.mkDerivation rec {
     libsoup
     libtiff
     libuuid
-    libvorbis
     libxml2
     networkmanager
     poppler
+    systemd
     taglib
     upower
   ];
@@ -110,9 +108,6 @@ stdenv.mkDerivation rec {
   mesonFlags = [
     # TODO: tests do not like our sandbox
     "-Dfunctional_tests=false"
-    "-Ddbus_services_dir=${placeholder "out"}/share/dbus-1/services"
-    "-Dsystemd_user_services=true"
-    "-Dsystemd_user_services_dir=${placeholder "out"}/lib/systemd/user"
   ];
 
   patches = [
