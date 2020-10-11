@@ -1,12 +1,11 @@
 { stdenv
 , fetchurl
 , fetchpatch
-, intltool
+, gettext
 , autoreconfHook
 , itstool
 , libxml2
-, libxslt
-, pkgconfig
+, pkg-config
 , gnome-panel
 , gtk3
 , glib
@@ -19,7 +18,7 @@
 , adwaita-icon-theme
 , libgweather
 , gucharmap
-, tracker
+, tracker_2
 , polkit
 , gnome3
 }:
@@ -42,11 +41,10 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [
-    intltool
+    gettext
     itstool
-    pkgconfig
+    pkg-config
     libxml2
-    libxslt
     # Our patch changes configure.ac
     autoreconfHook
   ];
@@ -63,7 +61,7 @@ stdenv.mkDerivation rec {
     adwaita-icon-theme
     libgweather
     gucharmap
-    tracker
+    tracker_2
     polkit
     wirelesstools
     linuxPackages.cpupower
