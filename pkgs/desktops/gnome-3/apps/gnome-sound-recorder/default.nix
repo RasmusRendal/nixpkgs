@@ -47,7 +47,7 @@ stdenv.mkDerivation rec {
     gstreamer
     gst-plugins-base
     gst-plugins-good
-    gst-plugins-bad
+    gst-plugins-bad # for gstreamer-player-1.0
   ]);
 
   postPatch = ''
