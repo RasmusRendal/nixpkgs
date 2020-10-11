@@ -68,7 +68,7 @@ stdenv.mkDerivation rec {
   pname = "gnome-shell";
   version = "3.38.0";
 
-  outputs = [ "out" ];
+  outputs = [ "out" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-shell/${stdenv.lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -101,6 +101,13 @@ stdenv.mkDerivation rec {
       url = "https://gitlab.gnome.org/GNOME/gnome-shell/commit/ffb8bd5fa7704ce70ce7d053e03549dd15dce5ae.patch";
       revert = true;
       sha256 = "14h7ahlxgly0n3sskzq9dhxzbyb04fn80pv74vz1526396676dzl";
+    })
+
+    # Remove include of missing file preventing docs from building.
+    # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/1448
+    (fetchpatch {
+      url = "https://gitlab.gnome.org/GNOME/gnome-shell/commit/84cff8920509f99be47c017bd8bdf8e45ea90535.patch";
+      sha256 = "9bFfT7bHMdxPjDUvjoIrFQ3eddQv/kXyeTOAM+7eUm8=";
     })
   ];
 
@@ -170,7 +177,7 @@ stdenv.mkDerivation rec {
   ];
 
   mesonFlags = [
-    "-Dgtk_doc=false"
+    "-Dgtk_doc=true"
   ];
 
   postPatch = ''
