@@ -78,6 +78,7 @@ stdenv.mkDerivation rec {
     "-Dapi-docs=false"
     "--sysconfdir=/etc"
     "-Dsysconfdir_install=${placeholder "out"}/etc"
+    # Build all plug-ins except for tracker 2
     "-Dplugins=external,gst-launch,lms,media-export,mpris,playbin,ruih,tracker3"
   ];
 
