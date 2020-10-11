@@ -124,8 +124,7 @@ stdenv.mkDerivation rec {
   postPatch = ''
     patchShebangs build-aux/meson_post_install.py
 
-    # Upstream checks some common paths to find an `X` binary. We are NixOS.
-    # We are smarter.
+    # Upstream checks some common paths to find an `X` binary. We already know it.
     echo #!/bin/sh > build-aux/find-x-server.sh
     echo "echo ${stdenv.lib.getBin xorg.xorgserver}/bin/X" >> build-aux/find-x-server.sh
     patchShebangs build-aux/find-x-server.sh
