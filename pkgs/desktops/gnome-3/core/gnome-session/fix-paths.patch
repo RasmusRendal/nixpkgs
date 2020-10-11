@@ -14,7 +14,7 @@ index ddd1a591..46a3488b 100755
 +   ! (echo "$SHELL" | @grep@ -q "nologin"); then
    if [ "$1" != '-l' ]; then
 -    exec bash -c "exec -l '$SHELL' -c '$0 -l $*'"
-+    # Make sure the shell actually setup up the environment
++    # Make sure the shell actually sets up the environment.
 +    unset __NIXOS_SET_ENVIRONMENT_DONE
 +    exec @bash@ -c "exec -l '$SHELL' -c '$0 -l $*'"
    else
