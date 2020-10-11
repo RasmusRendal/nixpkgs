@@ -2,7 +2,6 @@
 , lib
 , desktop-file-utils
 , fetchurl
-, fetchpatch
 , gettext
 , glib
 , gtk3
@@ -29,9 +28,6 @@ stdenv.mkDerivation rec {
     url = "mirror://gnome/sources/${pname}/${stdenv.lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
     sha256 = "1kj1yb7sfd874jm0666cnf5lc0c83gxhsdqhjic6ykppqa6p5kcb";
   };
-
-  patches = [
-  ];
 
   nativeBuildInputs = [
     desktop-file-utils
