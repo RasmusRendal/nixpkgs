@@ -8,8 +8,6 @@
 , gtk3
 , gtksourceview4
 , icu
-, libuchardet
-, libxml2
 , pkg-config
 }:
 
@@ -31,13 +29,11 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     icu
-    libxml2
   ];
 
   propagatedBuildInputs = [
     amtk
     gtksourceview4
-    libuchardet
     gtk3
   ];
 
@@ -53,8 +49,8 @@ stdenv.mkDerivation rec {
   meta = with stdenv.lib; {
     homepage = "https://wiki.gnome.org/Projects/Tepl";
     description = "Text editor product line";
-    maintainers = [ maintainers.manveru ];
-    license = licenses.lgpl21Plus;
+    maintainers = teams.gnome.members ++ [ maintainers.manveru ];
+    license = licenses.lgpl3Plus;
     platforms = platforms.linux;
   };
 }
