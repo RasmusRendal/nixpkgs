@@ -72,12 +72,6 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  # During configurePhase, two python scripts are generated and need this. See
-  # https://github.com/NixOS/nixpkgs/pull/98316#issuecomment-695785692
-  postConfigure = ''
-    patchShebangs tools/*
-  '';
-
   checkInputs = stdenv.lib.optionals stdenv.isDarwin [
     cctools # for otool
   ];
@@ -95,6 +89,12 @@ stdenv.mkDerivation rec {
   ];
 
   doCheck = !stdenv.isAarch64;
+
+  # During configurePhase, two python scripts are generated and need this. See
+  # https://github.com/NixOS/nixpkgs/pull/98316#issuecomment-695785692
+  postConfigure = ''
+    patchShebangs tools/*
+  '';
 
   preCheck = ''
     # Our gobject-introspection patches make the shared library paths absolute
