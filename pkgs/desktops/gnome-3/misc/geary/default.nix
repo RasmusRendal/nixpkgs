@@ -37,7 +37,6 @@
 , appstream-glib
 , libytnef
 , libhandy
-, glade
 , gsound
 }:
 
@@ -70,7 +69,6 @@ stdenv.mkDerivation rec {
     enchant2
     folks
     gcr
-    glade
     glib-networking
     gmime3
     gnome-online-accounts
