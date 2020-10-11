@@ -1,6 +1,5 @@
 { stdenv
 , fetchurl
-, fetchpatch
 , meson
 , ninja
 , python3
