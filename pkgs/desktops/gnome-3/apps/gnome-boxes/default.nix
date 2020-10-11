@@ -64,6 +64,7 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   nativeBuildInputs = [
+    appstream-glib # for appstream-util
     desktop-file-utils
     gettext
     gobject-introspection
@@ -94,7 +95,6 @@ stdenv.mkDerivation rec {
     gtk3
     gtksourceview4
     json-glib
-    appstream-glib
     libapparmor
     libarchive
     libcap
