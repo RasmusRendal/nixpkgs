@@ -1,8 +1,6 @@
 { stdenv
 , fetchurl
-, fetchpatch
 , gettext
-, autoreconfHook
 , itstool
 , libxml2
 , pkg-config
@@ -31,22 +29,12 @@ stdenv.mkDerivation rec {
     url = "mirror://gnome/sources/${pname}/${stdenv.lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
     sha256 = "0l1mc9ymjg0bgk92a08zd85hx1vaqrzdj0dwzmna20rp51vf0l4a";
   };
-  patches = [
-    # Enable to configure gnome panel's modules dir. See
-    # https://gitlab.gnome.org/GNOME/gnome-applets/-/merge_requests/65
-    (fetchpatch {
-      url = "https://gitlab.gnome.org/GNOME/gnome-applets/commit/c9724bd40e50c22880e1dc7f21ddb6b161d2691c.diff";
-      sha256 = "1qd0li7jlyn33r8674g4fs08kf0q6na719vc4nccp55rhwy487b6";
-    })
-  ];
 
   nativeBuildInputs = [
     gettext
     itstool
     pkg-config
     libxml2
-    # Our patch changes configure.ac
-    autoreconfHook
   ];
 
   buildInputs = [
@@ -71,10 +59,8 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  configureFlags = [
-    # Don't try to install modules to gnome panel's directory, as it's read only
-    "GNOME_PANEL_MODULES_DIR=${placeholder "out"}/share/gnome-panel/applets"
-  ];
+  # Don't try to install modules to gnome panel's directory, as it's read only
+  PKG_CONFIG_LIBGNOME_PANEL_MODULESDIR = "${placeholder "out"}/lib/gnome-panel/modules";
 
   passthru = {
     updateScript = gnome3.updateScript {
