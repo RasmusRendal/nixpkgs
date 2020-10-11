@@ -108,9 +108,9 @@ index 7f4f666d2..b27968f13 100644
    meta_start ();
 +
 +#ifdef HAVE_LIBCAPNG
-+    capng_clear(CAPNG_SELECT_BOTH);
-+    capng_update(CAPNG_ADD, CAPNG_EFFECTIVE|CAPNG_PERMITTED, CAP_SYS_NICE);
-+    capng_apply(CAPNG_SELECT_BOTH);
++  capng_clear(CAPNG_SELECT_BOTH);
++  capng_update(CAPNG_ADD, CAPNG_EFFECTIVE|CAPNG_PERMITTED, CAP_SYS_NICE);
++  capng_apply(CAPNG_SELECT_BOTH);
 +#endif
 +
    meta_run_main_loop ();
