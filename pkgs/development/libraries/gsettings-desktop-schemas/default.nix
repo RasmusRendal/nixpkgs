@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
 
   meta = with stdenv.lib; {
     description = "Collection of GSettings schemas for settings shared by various components of a desktop";
-    license = licenses.lgpl21Only;
+    license = licenses.lgpl21Plus;
     maintainers = teams.gnome.members;
   };
 }
